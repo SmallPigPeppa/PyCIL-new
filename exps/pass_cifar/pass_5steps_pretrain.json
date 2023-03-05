@@ -1,12 +1,12 @@
 {
     "prefix": "pretrain_pass_train",
-    "dataset": "imagenet100",
+    "dataset": "cifar100",
     "memory_size": 0,
     "shuffle": true,
     "init_cls": 50,
     "increment": 10,
     "model_name": "pass",
-    "convnet_type": "resnet50_cbam",
+    "convnet_type": "resnet50_cbam_cifar",
     "device": ["0"],
     "seed": [1993],
     "lambda_fkd":10,
@@ -20,5 +20,5 @@
     "gamma":0.1,
     "num_workers" : 8,
     "T" : 2,
-    "pretrained_model": "/mnt/mmtech01/usr/liuwenzhuo/code/solo-learn/trained_models/byol-official/byol-resnet50-imagenet-100ep-25x5nqle-ep=99.ckpt"
+    "pretrained_model": "/mnt/mmtech01/usr/liuwenzhuo/code/solo-learn/trained_models/byol/t3pmk238/byol-imagenet32-t3pmk238-ep=999.ckpt"
 }
