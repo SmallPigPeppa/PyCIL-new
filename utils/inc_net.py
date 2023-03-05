@@ -39,6 +39,16 @@ def get_convnet(args, pretrained=False):
         return resnet34_cbam(pretrained=pretrained,args=args)
     elif name == "resnet50_cbam":
         return resnet50_cbam(pretrained=pretrained,args=args)
+    elif name == 'cosine_resnet50_cifar':
+        resnet_cifar = cosine_resnet50(pretrained=pretrained)
+        resnet_cifar.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=2, bias=False)
+        resnet_cifar.maxpool = nn.Identity()
+        return resnet_cifar
+    elif name == 'resnet50_cifar':
+        resnet_cifar = resnet50(pretrained=pretrained)
+        resnet_cifar.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=2, bias=False)
+        resnet_cifar.maxpool = nn.Identity()
+        return resnet_cifar
     else:
         raise NotImplementedError("Unknown type {}".format(name))
 
