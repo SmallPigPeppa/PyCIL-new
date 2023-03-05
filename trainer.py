@@ -74,6 +74,12 @@ def _train(args):
             del state[k]
         if args['model_name']=='der':
             model._network.use_ssl_encoder=True
+        elif args['model_name']=='ssre':
+            for k in list(state.keys()):
+                if "downsample" in k:
+                    del state[k]
+            model._network.convnet.load_state_dict(state, strict=False)
+
         else:
             model._network.convnet.load_state_dict(state, strict=False)
 
