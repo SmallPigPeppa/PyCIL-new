@@ -9,7 +9,7 @@ from convs.ucir_resnet import resnet18 as cosine_resnet18
 from convs.ucir_resnet import resnet34 as cosine_resnet34
 from convs.ucir_resnet import resnet50 as cosine_resnet50
 from convs.linears import SimpleLinear, SplitCosineLinear, CosineLinear
-from convs.modified_represnet import resnet18_rep,resnet34_rep
+from convs.modified_represnet import resnet18_rep,resnet34_rep,resnet50_rep
 from convs.resnet_cbam import resnet18_cbam,resnet34_cbam,resnet50_cbam
 
 
@@ -49,6 +49,8 @@ def get_convnet(args, pretrained=False):
         resnet_cifar.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=2, bias=False)
         resnet_cifar.maxpool = nn.Identity()
         return resnet_cifar
+    elif name == "resnet50_rep":
+        return resnet50_rep(pretrained=pretrained,args=args)
     else:
         raise NotImplementedError("Unknown type {}".format(name))
 

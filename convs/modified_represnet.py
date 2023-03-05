@@ -4,7 +4,7 @@ import math
 import torch.utils.model_zoo as model_zoo
 import torch.nn.functional as F
 
-__all__ = ['ResNet', 'resnet18_rep', 'resnet34_rep' ]
+__all__ = ['ResNet', 'resnet18_rep', 'resnet50_rep', 'resnet34_rep' ]
 
 
 def conv3x3(in_planes, out_planes, stride=1):
@@ -161,6 +161,22 @@ def resnet18_rep(pretrained=False, **kwargs):
         now_state_dict.update(pretrained_state_dict)
         model.load_state_dict(now_state_dict)
     return model
+
+
+def resnet50_rep(pretrained=False, **kwargs):
+    """Constructs a ResNet-18 model.
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+    """
+    model = ResNet(BasicBlock, [3, 4, 6, 3], **kwargs)
+    if pretrained:
+        pretrained_state_dict = model_zoo.load_url(model_urls['resnet50'])
+        now_state_dict        = model.state_dict()
+        now_state_dict.update(pretrained_state_dict)
+        model.load_state_dict(now_state_dict)
+    return model
+
+
 
 
 def resnet34_rep(pretrained=False, **kwargs):
