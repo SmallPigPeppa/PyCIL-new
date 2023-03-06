@@ -4,7 +4,7 @@
     "memory_size": 0,
     "shuffle": true,
     "init_cls": 50,
-    "increment": 10,
+    "increment": 5,
     "model_name": "ssre",
     "convnet_type": "resnet50_rep",
     "device": ["0"],
